@@ -1,6 +1,6 @@
 # PyChain Lab : Tool-Integrate-Reasoning
 
-데이터셋은 `datasets/` 디렉토리 아래에 넣어주시면 감사하겠습니다. 직접 제작한 `gen-answer-OpenMathReasoning` 데이터셋은 폴더에 포함시켰으나, `MATH`, `OpenMathReasoning`은 저작권 문제로 인해 포함시키지 않았습니다.
+데이터셋은 `datasets/` 디렉토리 아래에 넣어주시면 감사하겠습니다. 
 이 프로젝트는 `nvidia/OpenMath-Nemotron-1.5B` 모델을 사용해, Tool-Integrate-Reasoning (TIR) 방식의 수학 문제 풀이를 구현한 프로젝트입니다.
 
 - `demo.sh` : `nvidia/OpenMath-Nemotron-1.5B` 모델을 이용한 Tool-Integrate-Reasoning (TIR) 방식의 수학 문제 풀이를 해볼 수 있는 데모입니다.
