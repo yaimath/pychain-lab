@@ -1,6 +1,7 @@
+
 # 🧠 LLaDA-CoT: Semi-Autoregressive Reasoning with LLaDA
 
-이 프로젝트는 [`GSAI-ML/LLaDA-8B-Instruct`](https://huggingface.co/GSAI-ML/LLaDA-8B-Instruct) 모델을 기반으로, **Step-by-step Chain-of-Thought(CoT) 추론**을 반영한 세미 오토리그레시브 방식의 문제 해결 방식을 구현한 것입니다.
+이 프로젝트는 [`GSAI-ML/LLaDA-8B-Instruct`](https://huggingface.co/GSAI-ML/LLaDA-8B-Instruct) 모델을 기반으로, **Step-by-step Chain-of-Thought(CoT) 추론**을 반영한 Semi-Auto Regressive 방식의 문제 해결 방식을 구현한 것입니다.
 
 > Masked Denoising 방식과 LoRA 기반 미세조정을 통해 LLaDA 모델의 수학 문제 해결 능력을 향상시키는 것이 목표입니다.
 
@@ -11,6 +12,7 @@
 ```
 .
 ├── generate.py             # 세미 오토리그레시브 방식 생성 함수
+├── datamaker.py            # 기존의 MATH 데이터셋을 학습, 평가용 jsonl 파일로 변경경
 ├── train.py                # LoRA 기반 학습 코드
 ├── solve.py                # 정답 추출 및 추론 평가 스크립트
 ├── requirements.txt        # 실행에 필요한 패키지 목록
@@ -30,9 +32,16 @@
 pip install -r requirements.txt
 ```
 
-> ✅ `torch`, `transformers`, `peft`, `tqdm` 등이 필요합니다.
+### 2. 데이터셋 생성
 
-### 2. 학습 실행
+```bash
+python datamaker.py 
+```
+- Option 이지만 MATH dataset을 diffusion model에 CoT하기 적합한 형태로 변형합니다.
+- datasets 폴더 하위에 MATH를 두면 됩니다.
+
+
+### 3. 학습 실행
 
 ```bash
 python train.py
@@ -41,7 +50,7 @@ python train.py
 - 학습 데이터: `datasets/train.jsonl`
 - 학습 결과: `modelss/llada_multi_pass_epoch*` 에 저장됩니다.
 
-### 3. 추론 실행
+### 4. 추론 실행
 
 ```bash
 python solve.py
@@ -106,25 +115,3 @@ python solve.py
   "answer": "30"
 }
 ```
-
----
-
-## 💡 향후 개선 아이디어
-
-- 두 단계 생성: `rationale` 생성 후 `숫자/boxed` 채우는 방식 적용
-- mask token 위치 기반 fine-tuned generation
-- 평가 정확도 향상을 위한 prompt-tuning 및 rational sampling 전략
-
----
-
-## 📜 라이선스
-
-MIT License
-
----
-
-## 🙏 참고
-
-- [LLaDA Paper](https://arxiv.org/abs/2402.10303)
-- [HuggingFace Transformers](https://github.com/huggingface/transformers)
-- [PEFT (LoRA)](https://github.com/huggingface/peft)
