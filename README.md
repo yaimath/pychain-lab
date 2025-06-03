@@ -1,4 +1,4 @@
-# pychain
+# PyChain Lab : Chain-of-Thought
 
 데이터셋은 `datasets/` 디렉토리 아래에 넣어주시면 감사하겠습니다. 직접 제작한 `gen-answer-OpenMathReasoning` 데이터셋은 폴더에 포함시켰으나, `MATH`, `OpenMathReasoning`은 저작권 문제로 인해 포함시키지 않았습니다.
 
