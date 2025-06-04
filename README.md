@@ -1,42 +1,27 @@
-# PyChain Lab : Tool-Integrate-Reasoning
+# 🧮 LLM Math Reasoning Lab
 
-데이터셋은 `datasets/` 디렉토리 아래에 넣어주시면 감사하겠습니다. 
-이 프로젝트는 `nvidia/OpenMath-Nemotron-1.5B` 모델을 사용해, Tool-Integrate-Reasoning (TIR) 방식의 수학 문제 풀이를 구현한 프로젝트입니다.
+이 프로젝트는 다양한 방식의 **수학 문제 해결을 위한 LLM 응용 기법**을 연구하고 구현한 프로젝트 모음입니다.  
+각 하위 디렉토리는 독립적인 실험 프로젝트로 구성되어 있으며, 다양한 모델 및 추론 방식에 기반하여 LLM을 이용해 수학 문제를 푸는 방법을 탐색합니다.
 
-- `demo.sh` : `nvidia/OpenMath-Nemotron-1.5B` 모델을 이용한 Tool-Integrate-Reasoning (TIR) 방식의 수학 문제 풀이를 해볼 수 있는 데모입니다.
-- `train_config.py` : `dataset/` 디렉토리 안의 문제들에 대한 evaluation을 수행합니다. `nvidia/OpenMath-Nemotron-1.5B` 모델을 이용한 Tool-Integrate-Reasoning (TIR) 방식을 사용합니다.
+---
 
-### 1. 패키지 설치
+## 📂 서브 디렉토리 소개
 
-```bash
-pip install -r requirements.txt
-```
+| 프로젝트 | 설명 |
+|----------|------|
+| [`verifier`](verifier/) | LLaDA-CoT의 출력을 검증하는 Verifier. DeepSeek 모델 기반으로 OpenMathReasoning dataset을 학습. |
+| [`chain-of-thought`](chain-of-thought/) | QLoRA 기반의 Chain-of-Thought 학습 및 오답 기반 재학습/라우팅 모델 포함. |
+| [`discrete-diffusion-llm`](discrete-diffusion-llm/) | Semi-AutoRegressive 방식으로 수학 추론을 수행하는 diffusion-style 모델. |
+| [`tool-integrated-reasoning`](tool-integrated-reasoning/) | Tool 호출 기반 수학 추론(TIR)을 Nemotron 모델 기반으로 구현한 실험. |
 
-### 2. 추론 실행
+---
 
-```bash
-python demo.py "Find the greatest common factor of $144$ and $405$."
+## 📦 패키지 설치
 
-python demo.py "Two chords, $AB$ and $CD,$ meet inside a circle at $P.$  If $AP = CP = 7,$ then what is $\\frac{BP}{DP}$?"
+- 각 서브 디렉토리의 `requirements.txt` 파일을 참고해주세요
 
-python demo.py "The function $f(x)$ satisfies\n\\[f(f(x)) = 6x - 2005\\]for all real numbers $x.$  There exists an integer $n$ such that $f(n) = 6n - 2005.$  Find $n.$"
-```
+---
 
-- Tool-Integrate-Reasoning 방식으로 수학 문제를 풀이합니다.
+## 🚀 실행 방법
 
-### 3. 모델 평가 
-
-```bash
-python evaluate.py 
-```
-
-- `dataset/` 디렉토리 안의 문제들을 풀이하고 결과를 .csv 파일로 저장합니다.
-- Tool-Integrate-Reasoning 방식으로 수학 문제를 풀이합니다.
-- 요구하는 데이터 형식은 아래와 같습니다.
-```json
-{
-    "problem": "If $a * b = a^b + b^a$, for all positive integer values of $a$ and $b$, then what is the value of $2 * 6$?",
-    "type": "Algebra",
-    "solution": "\\boxed{100}$."
-}
-```
+각 프로젝트 디렉토리 안에 있는 `README.md`를 참고하세요.
