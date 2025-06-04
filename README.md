@@ -18,7 +18,7 @@
 
 ## 📦 패키지 설치
 
-- 각 서브 디렉토리의 `requirements.txt` 파일을 참고해주세요
+각 서브 디렉토리의 `requirements.txt` 파일을 참고해주세요
 
 ---
 
