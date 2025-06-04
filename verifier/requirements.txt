@@ -1,0 +1,6 @@
+datasets==3.5.0
+pandas==2.2.3
+peft==0.15.2
+torch==2.7.0+cu118
+tqdm==4.67.1
+transformers==4.51.3
